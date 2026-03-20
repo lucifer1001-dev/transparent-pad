@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Transparent Pad</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: rgba(0, 0, 0, 0.3);
+      font-family: sans-serif;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* HEADER = DRAG AREA */
+    #header {
+      height: 30px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+
+      -webkit-app-region: drag;
+    }
+
+    #closeBtn {
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+
+      -webkit-app-region: no-drag;
+    }
+
+    textarea {
+      width: 100%;
+      height: calc(100vh - 30px);
+      background: transparent;
+      color: white;
+      border: none;
+      outline: none;
+      resize: none;
+      padding: 10px;
+      box-sizing: border-box;
+
+      -webkit-app-region: no-drag;
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      display: flex;
+      gap: 5px;
+
+      -webkit-app-region: no-drag;
+    }
+
+    input[type="range"] {
+      width: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div id="header">
+    <span>Transparent Pad</span>
+    <button id="closeBtn">✕</button>
+  </div>
+
+  <!-- TEXT AREA -->
+  <textarea id="pad" placeholder="Paste text here..."></textarea>
+
+  <!-- CONTROLS -->
+  <div id="controls">
+    <input type="color" id="textColor" title="Text color">
+    <input type="color" id="bgColor" title="Background color">
+    <input type="range" id="opacity" min="0.1" max="1" step="0.1" value="0.3">
+    <input type="range" id="fontSize" min="10" max="48" step="1" value="16" title="Font size">
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
